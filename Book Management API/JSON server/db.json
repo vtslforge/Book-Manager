@@ -1,0 +1,19 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Aarav Sharma",
+      "age": 21,
+      "course": "Computer Science",
+      "email": "aarav@example.com"
+    },
+    {
+      "name": "aman",
+      "age": "23",
+      "course": "medico",
+      "email": "aman@gmail.com",
+      "id": "iWgDl3lGfLg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
