@@ -1,21 +1,82 @@
 import { useState } from "react";
+import type { BookID, User } from "../types/userType";
 
-export function studentDataFetch() {
-  const [studata, setStudata] = useState<any>();
-  const [errorFound, seterrorFound] = useState<any>();
+export function useBooks() {
+  const [books, setBooks] = useState<User[]>([]);
+  const [book, setBook] = useState<Omit<User, "id">>({
+    title: "",
+    author: "",
+    genre: "",
+    publishedYear: 0,
+    price: 0,
+  });
 
+  const [error, setError] = useState<unknown>();
+
+  // GET
   async function dataFetch() {
     try {
-      const response = await fetch("http://localhost:3000/students");
+      const response = await fetch("http://localhost:3000/books");
+
       if (!response.ok) {
-        throw new Error("failed to fetch");
+        throw new Error("Failed to fetch");
       }
-      const studentData = await response.json();
-      setStudata(studentData);
+
+      const data: User[] = await response.json();
+      setBooks(data);
     } catch (error) {
-      seterrorFound(error);
+      setError(error);
     }
   }
 
-  return { studata, setStudata, errorFound, seterrorFound, dataFetch };
+  // POST
+  async function handlePost() {
+    try {
+      const response = await fetch("http://localhost:3000/books", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(book),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add book");
+      }
+
+      await dataFetch();
+    } catch (error) {
+      setError(error);
+    }
+  }
+
+  // DELETE
+  async function handleDelete(id: BookID) {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/books/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete book");
+      }
+
+      await dataFetch();
+    } catch (error) {
+      setError(error);
+    }
+  }
+
+  return {
+    books,
+    book,
+    setBook,
+    error,
+    dataFetch,
+    handlePost,
+    handleDelete,
+  };
 }

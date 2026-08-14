@@ -1,67 +1,84 @@
 import { Link } from "react-router";
-import { addUserData } from "../Hook/UserAdd";
+import { useBooks } from "../Hook/Fetch";
 
 const UserAddition = () => {
-  const {
-    name,
-    setName,
-    age,
-    setAge,
-    email,
-    setCourse,
-    setEmail,
-    course,
-    handleAdd,
-  } = addUserData();
+  const { book, setBook, handlePost } = useBooks();
 
   return (
-    <div className=" justify-center items-center p-40">
-      <Link className="border p-3" to={"/"}>
+    <div className="justify-center items-center p-40">
+      <Link className="border p-3" to="/">
         HOME
       </Link>
-      <p className="mt-10">ADD NAME</p>
+
+      <p className="mt-10">ADD TITLE</p>
       <input
-        onChange={(e) => setName(e.target.value)}
-        value={name}
+        onChange={(e) => setBook({ ...book, title: e.target.value })}
+        value={book.title}
         className="h-10 w-90 border mt-5 pl-3"
         type="text"
-        placeholder="Enter name"
+        placeholder="Enter title"
       />
-      <p className="mt-10">ADD AGE</p>
+
+      <p className="mt-10">ADD AUTHOR</p>
       <input
-        onChange={(e) => setAge(e.target.value)}
-        value={age}
+        onChange={(e) => setBook({ ...book, author: e.target.value })}
+        value={book.author}
         className="h-10 w-90 border mt-5 pl-3"
         type="text"
-        placeholder="Enter age"
+        placeholder="Enter author"
       />
-      <p className="mt-10">ADD COURSE</p>
+
+      <p className="mt-10">ADD GENRE</p>
       <input
-        onChange={(e) => setCourse(e.target.value)}
-        value={course}
+        onChange={(e) => setBook({ ...book, genre: e.target.value })}
+        value={book.genre}
         className="h-10 w-90 border mt-5 pl-3"
         type="text"
-        placeholder="Enter course"
+        placeholder="Enter genre"
       />
-      <p className="mt-10">ADD EMAIL</p>
+
+      <p className="mt-10">ADD PUBLISHED YEAR</p>
       <input
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
+        onChange={(e) =>
+          setBook({
+            ...book,
+            publishedYear: Number(e.target.value),
+          })
+        }
+        value={book.publishedYear || ""}
         className="h-10 w-90 border mt-5 pl-3"
-        type="text"
-        placeholder="Enter email"
+        type="number"
+        placeholder="Enter published year"
       />
+
+      <p className="mt-10">ADD PRICE</p>
+      <input
+        onChange={(e) =>
+          setBook({
+            ...book,
+            price: Number(e.target.value),
+          })
+        }
+        value={book.price || ""}
+        className="h-10 w-90 border mt-5 pl-3"
+        type="number"
+        placeholder="Enter price"
+      />
+
       <br />
+
       <button
-        onClick={handleAdd}
+        onClick={handlePost}
         className="border p-3 mt-5 mv-5 cursor-pointer"
       >
         ADD DATA
       </button>
-      <p>{name}</p>
-      <p>{age}</p>
-      <p>{course}</p>
-      <p>{email}</p>
+
+      <p>{book.title}</p>
+      <p>{book.author}</p>
+      <p>{book.genre}</p>
+      <p>{book.publishedYear}</p>
+      <p>{book.price}</p>
     </div>
   );
 };

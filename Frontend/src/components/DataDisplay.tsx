@@ -1,24 +1,13 @@
 import { useNavigate } from "react-router";
-import { studentDataFetch } from "../Hook/Fetch";
+import type { BookID } from "../types/userType";
+import { useBooks } from "../Hook/Fetch";
 
 const DataDisplay = () => {
-  // to display fetch data
-  const { studata, dataFetch } = studentDataFetch();
-  // handle to delete data
+  const { books, dataFetch, handleDelete } = useBooks();
 
-  async function handleDelete(id: number) {
-    const res = await fetch(`http://localhost:3000/students/${id}`, {
-      method: "DELETE",
-    });
-    if (res.ok) {
-      alert("deleted");
-      dataFetch();
-    }
-  }
+  const navigate = useNavigate();
 
-  let navigate = useNavigate();
-
-  function handleEdit(id: any) {
+  function handleEdit(id: BookID) {
     navigate(`/edit/${id}`);
   }
 
@@ -27,22 +16,26 @@ const DataDisplay = () => {
       <button onClick={dataFetch} className="border p-3 cursor-pointer">
         Refresh Data
       </button>
+
       <div className="w-full mt-10 overflow-hidden border">
-        {studata?.map((items: any) => (
+        {books.map((items) => (
           <div
             key={items.id}
             className="grid grid-cols-6 items-center border-b px-5 py-4"
           >
-            <div className="font-medium">{items.name}</div>
-            <div>{items.age}</div>
-            <div>{items.course}</div>
-            <div>{items.email}</div>
+            <div>{items.title}</div>
+            <div>{items.author}</div>
+            <div>{items.genre}</div>
+            <div>{items.publishedYear}</div>
+            <div>{items.price}</div>
+
             <button
               onClick={() => handleDelete(items.id)}
               className="border bg-gray-300 cursor-pointer"
             >
               Delete
             </button>
+
             <button
               onClick={() => handleEdit(items.id)}
               className="border bg-gray-300 cursor-pointer"
