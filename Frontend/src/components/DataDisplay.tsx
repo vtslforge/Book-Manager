@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { studentDataFetch } from "../Hook/Fetch";
 
 const DataDisplay = () => {
@@ -6,13 +7,19 @@ const DataDisplay = () => {
   // handle to delete data
 
   async function handleDelete(id: number) {
-    const res = fetch(`http://localhost:3000/students/${id}`, {
+    const res = await fetch(`http://localhost:3000/students/${id}`, {
       method: "DELETE",
     });
-    if (await res) {
+    if (res.ok) {
       alert("deleted");
-      dataFetch()
+      dataFetch();
     }
+  }
+
+  let navigate = useNavigate();
+
+  function handleEdit(id: any) {
+    navigate(`/edit/${id}`);
   }
 
   return (
@@ -24,7 +31,7 @@ const DataDisplay = () => {
         {studata?.map((items: any) => (
           <div
             key={items.id}
-            className="grid grid-cols-5 items-center border-b px-5 py-4"
+            className="grid grid-cols-6 items-center border-b px-5 py-4"
           >
             <div className="font-medium">{items.name}</div>
             <div>{items.age}</div>
@@ -34,7 +41,13 @@ const DataDisplay = () => {
               onClick={() => handleDelete(items.id)}
               className="border bg-gray-300 cursor-pointer"
             >
-              delete
+              Delete
+            </button>
+            <button
+              onClick={() => handleEdit(items.id)}
+              className="border bg-gray-300 cursor-pointer"
+            >
+              Edit
             </button>
           </div>
         ))}

@@ -1,0 +1,138 @@
+{
+  "students": [
+    {
+      "name": "rahul kumar",
+      "age": "25",
+      "course": "biotech",
+      "email": "rahul234@gmail.com",
+      "id": "a7Kp2LmQ9xR"
+    },
+    {
+      "name": "priya",
+      "age": "21",
+      "course": "bca",
+      "email": "priya@gmail.com",
+      "id": "b3Nq8WsT4yU"
+    },
+    {
+      "name": "rohit",
+      "age": "24",
+      "course": "mechanical engineering",
+      "email": "rohit@gmail.com",
+      "id": "c5Hx1VzP7mL"
+    },
+    {
+      "name": "neha",
+      "age": "23",
+      "course": "bba",
+      "email": "neha@gmail.com",
+      "id": "d9Jk4RtX2pQ"
+    },
+    {
+      "name": "arjun",
+      "age": "22",
+      "course": "information technology",
+      "email": "arjun@gmail.com",
+      "id": "e2Fw7YsK6nM"
+    },
+    {
+      "name": "sneha",
+      "age": "21",
+      "course": "bsc",
+      "email": "sneha@gmail.com",
+      "id": "f8Lp3QaW5zN"
+    },
+    {
+      "name": "vikas",
+      "age": "25",
+      "course": "mba",
+      "email": "vikas@gmail.com",
+      "id": "g4Mn9XrT1kP"
+    },
+    {
+      "name": "anjali",
+      "age": "22",
+      "course": "bcom",
+      "email": "anjali@gmail.com",
+      "id": "h6Qw2ZpL8sR"
+    },
+    {
+      "name": "karan",
+      "age": "23",
+      "course": "electronics",
+      "email": "karan@gmail.com",
+      "id": "j1Rt5VxN9mK"
+    },
+    {
+      "name": "pooja",
+      "age": "20",
+      "course": "biotechnology",
+      "email": "pooja@gmail.com",
+      "id": "k7Ys4LpQ2wH"
+    },
+    {
+      "name": "aditya",
+      "age": "24",
+      "course": "computer applications",
+      "email": "aditya@gmail.com",
+      "id": "m3Xn8JrT6pV"
+    },
+    {
+      "name": "simran",
+      "age": "22",
+      "course": "psychology",
+      "email": "simran@gmail.com",
+      "id": "n9Qk1WsL5yC"
+    },
+    {
+      "name": "mohit",
+      "age": "23",
+      "course": "civil engineering",
+      "email": "mohit@gmail.com",
+      "id": "p5Vz7HrX3mA"
+    },
+    {
+      "name": "kavya",
+      "age": "21",
+      "course": "fashion design",
+      "email": "kavya@gmail.com",
+      "id": "q2Lm6NtW9rS"
+    },
+    {
+      "name": "sahil",
+      "age": "24",
+      "course": "data science",
+      "email": "sahil@gmail.com",
+      "id": "r8Kp3YxQ5vD"
+    },
+    {
+      "name": "divya",
+      "age": "22",
+      "course": "pharmacy",
+      "email": "divya@gmail.com",
+      "id": "s4Jw9MzL1nF"
+    },
+    {
+      "name": "yash",
+      "age": "23",
+      "course": "artificial intelligence",
+      "email": "yash@gmail.com",
+      "id": "t6Nx2QpR8kV"
+    },
+    {
+      "name": "riya",
+      "age": "21",
+      "course": "commerce",
+      "email": "riya@gmail.com",
+      "id": "v1Hs7LmX4qP"
+    },
+    {
+      "name": "manish",
+      "age": "25",
+      "course": "software engineering",
+      "email": "manish@gmail.com",
+      "id": "w9Qz3RtK6yM"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

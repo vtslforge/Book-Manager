@@ -7,13 +7,23 @@ export function addUserData() {
   const [email, setEmail] = useState("");
 
   async function handleAdd() {
-    const response = fetch("http://localhost:3000/students", {
+    const response = await fetch("http://localhost:3000/students", {
       method: "Post",
       body: JSON.stringify({ name, age, course, email }),
     });
-    if (await response) {
+    if ( response.ok) {
       alert("data added ");
     }
   }
-  return {name, setName, age,setAge,course,setCourse,email,setEmail,handleAdd}
+  return {
+    name,
+    setName,
+    age,
+    setAge,
+    course,
+    setCourse,
+    email,
+    setEmail,
+    handleAdd,
+  };
 }
