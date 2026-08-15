@@ -1,85 +1,95 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link } from "react-router";
+import { useBooks } from "../Hook/Fetch";
+
+const inputClass =
+  "mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100";
 
 const UserEdit = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [course, setCourse] = useState("");
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    async function updateData() {
-      const response = await fetch(`http://localhost:3000/students/${id}`);
-      let data = await response.json();
-      setName(data.name);
-      setAge(data.age);
-      setCourse(data.course);
-      setEmail(data.email);
-    }
-    updateData();
-  }, [id]);
-
-  async function handleAddUpdate() {
-    const response = await fetch(`http://localhost:3000/students/${id}`, {
-      method: "Put",
-      body: JSON.stringify({ name, age, course, email }),
-    });
-    if (response) {
-      alert("data updated ");
-    }
-    navigate("/");
-  }
+  const { book, setBook, handleUpdate } = useBooks();
 
   return (
-    <div className="p-50">
-      <Link className="border p-3" to={"/"}>
-        Home
-      </Link>
-      <div className="mt-10">Data to edit</div>
-
-      <p className="mt-10">ADD NAME</p>
-      <input
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-        className="h-10 w-90 border mt-5 pl-3"
-        type="text"
-        placeholder="Enter name"
-      />
-      <p className="mt-10">ADD AGE</p>
-      <input
-        onChange={(e) => setAge(e.target.value)}
-        value={age}
-        className="h-10 w-90 border mt-5 pl-3"
-        type="text"
-        placeholder="Enter age"
-      />
-      <p className="mt-10">ADD COURSE</p>
-      <input
-        onChange={(e) => setCourse(e.target.value)}
-        value={course}
-        className="h-10 w-90 border mt-5 pl-3"
-        type="text"
-        placeholder="Enter course"
-      />
-      <p className="mt-10">ADD EMAIL</p>
-      <input
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-        className="h-10 w-90 border mt-5 pl-3"
-        type="text"
-        placeholder="Enter email"
-      />
-      <br />
-      <button
-        onClick={handleAddUpdate}
-        className="border p-3 mt-5 mv-5 cursor-pointer"
-      >
-        Update DATA
-      </button>
-    </div>
+    <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-xl">
+        <Link
+          className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
+          to="/"
+        >
+          ← Back to books
+        </Link>
+        <section className="mt-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+            Edit book
+          </h1>
+          <p className="mt-2 text-sm text-slate-600">
+            Update the details below, then save your changes.
+          </p>
+          <div className="mt-7 space-y-5">
+            <label className="block text-sm font-medium text-slate-700">
+              Title
+              <input
+                onChange={(e) => setBook({ ...book, title: e.target.value })}
+                value={book.title}
+                className={inputClass}
+                type="text"
+                placeholder="Enter title"
+              />
+            </label>
+            <label className="block text-sm font-medium text-slate-700">
+              Author
+              <input
+                onChange={(e) => setBook({ ...book, author: e.target.value })}
+                value={book.author}
+                className={inputClass}
+                type="text"
+                placeholder="Enter author"
+              />
+            </label>
+            <label className="block text-sm font-medium text-slate-700">
+              Genre
+              <input
+                onChange={(e) => setBook({ ...book, genre: e.target.value })}
+                value={book.genre}
+                className={inputClass}
+                type="text"
+                placeholder="Enter genre"
+              />
+            </label>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block text-sm font-medium text-slate-700">
+                Published year
+                <input
+                  onChange={(e) =>
+                    setBook({ ...book, publishedYear: Number(e.target.value) })
+                  }
+                  value={book.publishedYear || ""}
+                  className={inputClass}
+                  type="number"
+                  placeholder="Enter year"
+                />
+              </label>
+              <label className="block text-sm font-medium text-slate-700">
+                Price
+                <input
+                  onChange={(e) =>
+                    setBook({ ...book, price: Number(e.target.value) })
+                  }
+                  value={book.price || ""}
+                  className={inputClass}
+                  type="number"
+                  placeholder="Enter price"
+                />
+              </label>
+            </div>
+            <button
+              onClick={handleUpdate}
+              className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              Save changes
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 };
 

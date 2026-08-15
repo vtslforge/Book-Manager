@@ -1,46 +1,6 @@
 {
   "books": [
     {
-      "id": "b1Kp9LmQ2xR",
-      "title": "The Alchemist",
-      "author": "Paulo Coelho",
-      "genre": "Fiction",
-      "publishedYear": 1988,
-      "price": 399
-    },
-    {
-      "id": "b3Nq8WsT4yU",
-      "title": "Atomic Habits",
-      "author": "James Clear",
-      "genre": "Self Help",
-      "publishedYear": 2018,
-      "price": 499
-    },
-    {
-      "id": "b5Hx1VzP7mL",
-      "title": "Clean Code",
-      "author": "Robert C. Martin",
-      "genre": "Programming",
-      "publishedYear": 2008,
-      "price": 699
-    },
-    {
-      "id": "b9Jk4RtX2pQ",
-      "title": "The Psychology of Money",
-      "author": "Morgan Housel",
-      "genre": "Finance",
-      "publishedYear": 2020,
-      "price": 450
-    },
-    {
-      "id": "b2Fw7YsK6nM",
-      "title": "Rich Dad Poor Dad",
-      "author": "Robert Kiyosaki",
-      "genre": "Finance",
-      "publishedYear": 1997,
-      "price": 350
-    },
-    {
       "id": "b8Lp3QaW5zN",
       "title": "The Pragmatic Programmer",
       "author": "Andrew Hunt",
@@ -79,6 +39,15 @@
       "genre": "Fantasy",
       "publishedYear": 1937,
       "price": 450
+    },
+    {
+      "title": "Herobinger",
+      "author": "krson",
+      "genre": "horror",
+      "publishedYear": 2023,
+      "price": 234,
+      "id": "dET74OmQ6eE"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
